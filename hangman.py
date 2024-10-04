@@ -78,18 +78,6 @@ class Hangman:
     def display_hangman(self):
         window.blit(hangman_images[self.errors], (50, 50))
 
-def add_letter(guessed_letters):
-    while True:
-        letter = input('Enter a letter: ').lower()
-        if len(letter) != 1:
-            print('Please enter a single letter.')
-        elif letter in guessed_letters:
-            print('You have already guessed that letter.')
-        elif not letter.isalpha():
-            print('Please enter a letter.')
-        else:
-            return letter
-
 # Main game loop
 run = True
 guessed_letters = []
