@@ -33,6 +33,38 @@ words_list = [
 def pick_word():
     return random.choice(words_list)
 
+class Word:
+    def __init__(self, word):
+        self.word = word
+        self.guessed_letters = []
+        
+    def display_word(self):
+        display = ''
+        for letter in self.word:
+            if letter in self.guessed_letters:
+                display += letter
+            else:
+                display += '_'
+        return display
+    
+class Hangman:
+    def __init__(self, word):
+        self.word = word
+        self.errors = 0
+        
+    def Count_errors(self, letter):
+        if letter not in self.word:
+            self.errors += 1
+
+    def game_over(self):
+        if self.errors == 6:
+            return True
+        else:
+            return False
+        
+    def display_hangman(self):
+        window.blit(hangman_images[self.errors], (50, 50))
+
 def add_letter(guessed_letters):
     while True:
         letter = input('Enter a letter: ').lower()
@@ -44,21 +76,10 @@ def add_letter(guessed_letters):
             print('Please enter a letter.')
         else:
             return letter
-        
-def display_hangman(errors):
-    window.blit(hangman_images[errors], (50, 50))
-    pygame.display.update()
 
-def display_word(word, guessed_letters):
-    display = ''
-    for letter in word:
-        if letter in guessed_letters:
-            display += letter
-        else:
-            display += '_'
-    return display
-
+# Main game loop
 run = True
+guessed_letters = []
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
