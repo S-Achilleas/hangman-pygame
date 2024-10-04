@@ -39,7 +39,18 @@ class Word:
                 display += letter + ' '
         text = font.render(display, True, (0, 0, 0))
         window.blit(text, (0, 500))
-    
+
+    def Game_over(self):
+        display = ''
+        for letter in self.word:
+            if letter in self.guessed_letters:
+                display += letter + "  "
+            else:
+                display += '__ '
+        if "__" not in display:
+            return True
+        return False
+
 class Hangman:
     def __init__(self, word):
         self.word = word
@@ -62,8 +73,11 @@ class Hangman:
 run = True
 wrd = Word(pick_word())
 hangman = Hangman(wrd.word)
+score = 0
 while run:
     window.fill((255, 255, 255))  # Clear screen
+    text = font.render(str(score), True, (0, 0, 0))
+    window.blit(text, (350, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -83,7 +97,10 @@ while run:
 
     # Check for game over
     if hangman.game_over():
-        print("Game Over! The word was:", wrd.word)
-        run = False
-
+        wrd = Word(pick_word())
+        hangman = Hangman(wrd.word)
+    elif wrd.Game_over():
+        wrd = Word(pick_word())
+        hangman = Hangman(wrd.word)
+        score += 1
     pygame.display.update()
