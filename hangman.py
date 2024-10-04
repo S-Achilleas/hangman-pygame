@@ -5,6 +5,7 @@ pygame.init()
 window = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('Hangman Game')
 hangman_images = [pygame.image.load(f'images/hangman{i}.png') for i in range(0,7)]
+errors = 0
 
 words_list = [
     "python",
@@ -31,6 +32,18 @@ words_list = [
 
 def pick_word():
     return random.choice(words_list)
+
+def add_letter(guessed_letters):
+    while True:
+        letter = input('Enter a letter: ').lower()
+        if len(letter) != 1:
+            print('Please enter a single letter.')
+        elif letter in guessed_letters:
+            print('You have already guessed that letter.')
+        elif not letter.isalpha():
+            print('Please enter a letter.')
+        else:
+            return letter
 
 def display_word(word, guessed_letters):
     display = ''
