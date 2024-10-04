@@ -4,6 +4,7 @@ pygame.init()
 
 window = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('Hangman Game')
+hangman_images = [pygame.image.load(f'images/hangman{i}.png') for i in range(0,7)]
 
 words_list = [
     "python",
