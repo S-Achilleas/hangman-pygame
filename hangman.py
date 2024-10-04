@@ -44,6 +44,10 @@ def add_letter(guessed_letters):
             print('Please enter a letter.')
         else:
             return letter
+        
+def display_hangman(errors):
+    window.blit(hangman_images[errors], (50, 50))
+    pygame.display.update()
 
 def display_word(word, guessed_letters):
     display = ''
