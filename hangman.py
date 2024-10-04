@@ -28,6 +28,9 @@ words_list = [
     "module"
 ]
 
+def pick_word():
+    return random.choice(words_list)
+
 run = True
 while run:
     for event in pygame.event.get():
