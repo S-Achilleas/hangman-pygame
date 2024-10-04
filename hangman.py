@@ -46,7 +46,7 @@ class Word:
                 display += letter
             else:
                 display += '__'
-        return display
+        window.blit(display, (200, 500))
     
     def add_letter(self, letter):
         while True:
