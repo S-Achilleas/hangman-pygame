@@ -43,9 +43,9 @@ class Word:
         display = ''
         for letter in self.word:
             if letter in self.guessed_letters:
-                display += letter
+                display += letter + "  "
             else:
-                display += '__'
+                display += '__  '
         window.blit(display, (200, 500))
     
     def add_letter(self, letter):
@@ -59,6 +59,13 @@ class Word:
                 print('Please enter a letter.')
             else:   
                 self.guessed_letters.append(letter)
+
+    def display_wrong_letters(self):
+        display = ''
+        for letter in self.guessed_letters:
+            if letter not in self.word:
+                display += letter + ' '
+        window.blit(display, (200, 400))
     
 class Hangman:
     def __init__(self, word):
