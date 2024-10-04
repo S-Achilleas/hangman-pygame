@@ -88,10 +88,17 @@ class Hangman:
 # Main game loop
 run = True
 guessed_letters = []
+wrd = Word(pick_word())
+hangman = Hangman(wrd.word)
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+    wrd.display_word()
+    wrd.display_wrong_letters()
+    hangman.display_hangman()
+    wrd.add_letter()
 
     window.fill((255, 255, 255))
     pygame.display.update()
