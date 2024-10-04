@@ -1,8 +1,32 @@
 import pygame
+import random
 pygame.init()
 
 window = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('Hangman Game')
+
+words_list = [
+    "python",
+    "hangman",
+    "programming",
+    "algorithm",
+    "function",
+    "variable",
+    "exception",
+    "inheritance",
+    "polymorphism",
+    "encapsulation",
+    "abstraction",
+    "recursion",
+    "iteration",
+    "syntax",
+    "debugging",
+    "compilation",
+    "interpreter",
+    "framework",
+    "library",
+    "module"
+]
 
 run = True
 while run:
